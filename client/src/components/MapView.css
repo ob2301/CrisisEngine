@@ -1,0 +1,77 @@
+.map-container {
+  min-height: 600px;
+}
+
+.map-container .leaflet-container {
+  height: 500px;
+  width: 100%;
+  z-index: 1;
+}
+
+.map-instructions {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.radius-control {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.radius-control label {
+  font-weight: bold;
+  color: #333;
+  min-width: 150px;
+}
+
+.radius-slider {
+  flex: 1;
+  height: 6px;
+  border-radius: 5px;
+  background: #e0e0e0;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.radius-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+}
+
+.radius-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+  border: none;
+}
+
+.popup-content {
+  text-align: left;
+}
+
+.popup-content strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 1rem;
+}
+
+.popup-content p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
