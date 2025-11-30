@@ -8,6 +8,7 @@ import SimulationResults from './components/SimulationResults';
 import VulnerabilityReport from './components/VulnerabilityReport';
 import StatsDashboard from './components/StatsDashboard';
 import ExportReport from './components/ExportReport';
+import AIAnalysis from './components/AIAnalysis';
 
 const API_BASE_URL = 'http://localhost:5001/api';
 
@@ -153,6 +154,7 @@ function App() {
           {simulation && (
             <div className="results-container">
               <StatsDashboard simulation={simulation} />
+              <AIAnalysis aiAnalysis={simulation.aiAnalysis} simulation={simulation} />
               <SimulationResults simulation={simulation} />
               <VulnerabilityReport vulnerability={simulation.vulnerability} />
               <ExportReport simulation={simulation} cityData={cityData} />

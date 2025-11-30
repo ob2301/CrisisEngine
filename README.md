@@ -4,6 +4,13 @@ A comprehensive crisis simulation system for natural disaster response planning 
 
 ## Features
 
+- **🤖 AI-Powered Analysis**: Intelligent AI agent provides:
+  - Real-time vulnerability analysis and risk assessment
+  - Strategic recommendations for resource optimization
+  - Scenario comparison and predictive insights
+  - Automated emergency response coordination suggestions
+  - Resource placement optimization recommendations
+
 - **Multi-City Support**: Simulate disasters across 5 major coastal US cities
   - Miami, FL
   - New York, NY
@@ -44,6 +51,7 @@ A comprehensive crisis simulation system for natural disaster response planning 
 - Node.js
 - Express.js
 - RESTful API
+- AI Agent System (Agentic AI for intelligent analysis)
 
 ### Frontend
 - React 18

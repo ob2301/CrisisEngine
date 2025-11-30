@@ -1,7 +1,11 @@
 const express = require('express');
 const cors = require('cors');
+const CrisisAIAgent = require('./aiAgent');
 const app = express();
 const PORT = process.env.PORT || 5001;
+
+// Initialize AI Agent
+const aiAgent = new CrisisAIAgent();
 
 app.use(cors());
 app.use(express.json());
@@ -364,10 +368,41 @@ app.post('/api/simulate', (req, res) => {
   const simulation = simulateDisaster(cityKey, disasterType, severity || 5, affectedArea);
   
   if (simulation) {
+    // Get AI agent analysis
+    const cityData = cities[cityKey];
+    const aiAnalysis = aiAgent.analyzeSimulation(simulation, cityData);
+    simulation.aiAnalysis = aiAnalysis;
+    
     res.json(simulation);
   } else {
     res.status(400).json({ error: 'Invalid simulation parameters' });
   }
+});
+
+// AI Agent endpoints
+app.post('/api/ai/analyze', (req, res) => {
+  const { simulation, cityKey } = req.body;
+  
+  if (!simulation || !cityKey) {
+    return res.status(400).json({ error: 'Missing required parameters' });
+  }
+
+  const cityData = cities[cityKey];
+  const analysis = aiAgent.analyzeSimulation(simulation, cityData);
+  
+  res.json(analysis);
+});
+
+app.post('/api/ai/predict', (req, res) => {
+  const { cityKey, disasterType, baseSimulation } = req.body;
+  
+  if (!cityKey || !disasterType || !baseSimulation) {
+    return res.status(400).json({ error: 'Missing required parameters' });
+  }
+
+  const scenarios = aiAgent.predictScenarios(cityKey, disasterType, baseSimulation);
+  
+  res.json({ scenarios });
 });
 
 app.listen(PORT, () => {
